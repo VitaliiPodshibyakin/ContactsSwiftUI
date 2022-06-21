@@ -8,28 +8,15 @@
 import SwiftUI
 
 struct NumbersScreen: View {
-    let persons = Person.getContactList()
+    
+    let contacts: [Person]
+    
     var body: some View {
         NavigationView {
-            List(persons) { person in
+            List(contacts) { person in
                 Section(header: Text("\(person.fullName)")) {
-                    VStack {
-                        HStack {
-                            Image(systemName: "phone")
-                                .foregroundColor(.blue)
-                                .frame(width: 50, alignment: .leading)
-                            Text("\(person.phoneNumber)")
-                                .frame(alignment: .leading)
-                            
-                        }
-                        HStack {
-                            Image(systemName: "envelope")
-                                .foregroundColor(.blue)
-                                .frame(width: 50, alignment: .leading)
-                            Text("\(person.email)")
-                                .frame(alignment: .leading)
-                        }
-                    }
+                    Label(person.phoneNumber, systemImage: "phone")
+                    Label(person.email, systemImage: "envelope")
                 }
                 .navigationBarTitle("Contact List")
             }
@@ -39,6 +26,6 @@ struct NumbersScreen: View {
 
 struct NumbersScreen_Previews: PreviewProvider {
     static var previews: some View {
-        NumbersScreen()
+        NumbersScreen(contacts: Person.getContactList())
     }
 }

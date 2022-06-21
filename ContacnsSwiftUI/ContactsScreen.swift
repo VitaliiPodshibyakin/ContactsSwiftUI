@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContactsScreen: View {
     
-    let persons = Person.getContactList()
+    let contacts: [Person]
     
     var body: some View {
         NavigationView {
-            List (persons) { person in
+            List (contacts) { person in
                 NavigationLink(destination: PersonInformationScreen(person: person)) {
-                    Text("\(person.fullName)")
+                    Text(person.fullName)
                 }
             }
             .navigationBarTitle("Contact List")
@@ -25,6 +25,6 @@ struct ContactsScreen: View {
 
 struct ContactsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ContactsScreen()
+        ContactsScreen(contacts: Person.getContactList())
     }
 }
