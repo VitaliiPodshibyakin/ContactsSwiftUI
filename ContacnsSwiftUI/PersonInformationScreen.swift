@@ -20,18 +20,8 @@ struct PersonInformationScreen: View {
             Spacer()
             
             List {
-                HStack {
-                    Image(systemName: "phone")
-                        .foregroundColor(.blue)
-
-                    Text("\(person.phoneNumber)")
-                        
-                }
-                HStack {
-                    Image(systemName: "envelope")
-                        .foregroundColor(.blue)
-                    Text("\(person.email)")
-                }.navigationTitle("\(person.fullName)")
+                Label(person.phoneNumber, systemImage: "phone")
+                Label(person.email, systemImage: "envelope")
             }
         }
         
